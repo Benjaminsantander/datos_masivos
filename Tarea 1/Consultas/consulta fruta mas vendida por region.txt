@@ -1,0 +1,36 @@
+
+WITH compras as (
+  SELECT *
+  FROM `tarea1.compra_fruta` as compra_fruta, `tarea1.compra_user` as Region
+  WHERE Region.id_compra = compra_fruta.id_compra
+),
+
+frutas_fecha as (
+SELECT fruta, fecha, cantidad, region
+FROM compras, `tarea1.frutas` as frutas
+WHERE frutas.id_fruta = compras.id_fruta
+),
+
+cantidad_frutas as (
+SELECT 
+  fruta,
+  EXTRACT(YEAR FROM fecha) AS ano,
+  EXTRACT(MONTH FROM fecha) AS mes,
+  SUM(cantidad) AS total,
+  region
+  FROM
+  frutas_fecha
+GROUP BY 
+  region, fruta, ano, mes
+ORDER BY 
+  ano, mes
+)
+
+SELECT region, fruta, 
+  ano, 
+  mes, 
+  total,
+  ROW_NUMBER() OVER (PARTITION BY region, ano, mes ORDER BY total DESC) AS ranking
+FROM cantidad_frutas
+QUALIFY ranking=1
+ORDER BY mes, region

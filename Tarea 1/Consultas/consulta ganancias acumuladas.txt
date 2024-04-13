@@ -1,0 +1,41 @@
+WITH compras as (
+  SELECT *
+  FROM `tarea1.compra_fruta` as compra_fruta, `tarea1.compra_user` as Region
+  WHERE Region.id_compra = compra_fruta.id_compra
+),
+
+frutas_fecha as (
+SELECT fruta, fecha, cantidad, region, precio
+FROM compras, `tarea1.frutas` as frutas
+WHERE frutas.id_fruta = compras.id_fruta
+),
+
+cantidad_frutas as (
+SELECT 
+  fruta,
+  EXTRACT(WEEK FROM fecha) AS week,
+  SUM(cantidad*precio) AS total,
+  region
+  FROM
+  frutas_fecha
+GROUP BY 
+  region, fruta, week
+ORDER BY 
+  week
+),
+
+semanas as (SELECT 
+  week, 
+  sum(total) as entrante
+FROM cantidad_frutas
+GROUP BY week
+ORDER BY week)
+
+SELECT 
+  week,
+  entrante,
+  SUM(entrante) OVER (ORDER BY week ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS ganancias_acumuladas
+FROM 
+  semanas
+ORDER BY 
+  week;

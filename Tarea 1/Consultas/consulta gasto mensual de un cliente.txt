@@ -1,0 +1,25 @@
+WITH Region as (
+  SELECT *
+  FROM `tarea1.compra_user`
+  WHERE region = 2 AND usuario_id = 75
+),
+
+compras as (
+  SELECT *
+  FROM `tarea1.compra_fruta` as compra_fruta, Region
+  WHERE Region.id_compra = compra_fruta.id_compra
+),
+
+frutas_fecha as (
+SELECT fruta, fecha, cantidad, cantidad*precio as gasto
+FROM compras, `tarea1.frutas` as frutas
+WHERE frutas.id_fruta = compras.id_fruta
+)
+
+SELECT 
+  EXTRACT(MONTH FROM fecha) AS mes,
+  sum(gasto) as gasto_total
+FROM frutas_fecha
+GROUP BY mes
+ORDER BY mes ASC
+
