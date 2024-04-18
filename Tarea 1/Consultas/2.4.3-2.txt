@@ -1,0 +1,48 @@
+WITH compras as (
+  SELECT *
+  FROM `tarea1.compra_fruta` as compra_fruta, `tarea1.compra_user` as Region
+  WHERE Region.id_compra = compra_fruta.id_compra
+),
+
+frutas_fecha as (
+SELECT fruta, fecha, cantidad, region, precio, usuario_id
+FROM compras, `tarea1.frutas` as frutas
+WHERE frutas.id_fruta = compras.id_fruta
+),
+
+cantidad_frutas as (
+SELECT 
+  usuario_id,
+  fruta,
+  EXTRACT(MONTH FROM fecha) AS mes,
+  SUM(cantidad*precio) AS total,
+  region
+  FROM
+  frutas_fecha
+GROUP BY 
+  region, usuario_id, fruta, mes
+ORDER BY 
+  mes
+),
+
+semanas as (
+  SELECT
+  usuario_id, 
+  region,
+  fruta,
+  mes, 
+  sum(total) as entrante
+FROM cantidad_frutas
+GROUP BY region, usuario_id, fruta, mes
+ORDER BY mes)
+
+SELECT 
+  usuario_id,
+  region,
+  fruta,
+  mes,
+  entrante
+FROM 
+  semanas
+ORDER BY 
+  usuario_id, region, mes;
