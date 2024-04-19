@@ -1,0 +1,3 @@
+SELECT * 
+FROM 
+  `tarea1.compra_user`

@@ -1,0 +1,4 @@
+SELECT id_compra, COUNT(usuario_id) AS cantidad_user
+FROM `tarea1.compra_user`
+GROUP BY id_compra
+HAVING cantidad_user > 1;
