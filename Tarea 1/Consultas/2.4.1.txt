@@ -1,4 +1,3 @@
-
 WITH compras as (
   SELECT *
   FROM `tarea1.compra_fruta` as compra_fruta, `tarea1.compra_user` as Region
@@ -27,10 +26,7 @@ ORDER BY
 )
 
 SELECT region, fruta, 
-  ano, 
   mes, 
   total,
-  ROW_NUMBER() OVER (PARTITION BY region, ano, mes ORDER BY total DESC) AS ranking
 FROM cantidad_frutas
-QUALIFY ranking=1
-ORDER BY mes, region
+ORDER BY mes, fruta, region
