@@ -29,7 +29,7 @@ Antes de comenzar, asegúrate de tener los siguientes elementos:
 
 #  Ejecucion del Jupyter Notebook del proyecto.
 
-- Navega a la carpeta `cora` que se encuentra en el mismo directorio que este README.md.
+- Navega a la carpeta `cora` que se encuentra en el mismo directorio que este `README.md`.
 - Descarga la carpeta junto con los archivos y dejarlo en el mismo directorio al Jupyter Notebook `Tarea 2 BDM.ipynb`.
 - Abre el Jupyter Notebook del proyecto en `Google Colab` o `Local`.
 - Cambia las variables de `URI` `AUTH` correspondientes a sus datos obtenidos de la seccion de neo4j de manera local o en la nube.
