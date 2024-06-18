@@ -27,7 +27,7 @@ Antes de comenzar, asegúrate de tener los siguientes elementos:
     ```sh
     pip install pyspark
 
-#  Ejecucion del Jupyter Notebook del proyecto.
+#  Ejecucion del Jupyter Notebook del Proyecto.
 
 - Navega a la carpeta `cora` que se encuentra en el mismo directorio que este `README.md`.
 - Descarga la carpeta junto con los archivos y dejarlo en el mismo directorio al Jupyter Notebook `Tarea 2 BDM.ipynb`.
