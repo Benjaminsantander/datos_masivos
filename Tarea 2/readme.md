@@ -7,7 +7,7 @@ Este proyecto proporciona una guía paso a paso sobre cómo analizar triángulos
 
 Antes de comenzar, asegúrate de tener los siguientes elementos:
 
-- Una cuenta en [Neo4j Aura](https://aura.neo4j.com/)
+- Una cuenta en [Neo4j Aura](https://console.neo4j.io)
 - Acceso a una instancia de AuraDB
 - Credenciales de acceso (URI, usuario y contraseña de la base de datos)
 - [Neo4j Desktop](https://neo4j.com/download/) instalado (opcional, pero recomendado para pruebas locales)
