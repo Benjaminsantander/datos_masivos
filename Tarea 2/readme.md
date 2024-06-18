@@ -1,4 +1,4 @@
-# Analizar Triángulos y Rectángulos en Grafos Utilizando Neo4j y AuraDB
+# Analizar Triángulos y Rectángulos en Grafos Utilizando PySpark junto con Neo4j y AuraDB
 
 Este proyecto proporciona una guía paso a paso sobre cómo analizar triángulos y rectángulos en grafos provenientes de una base de datos de grafos utilizando Neo4j mediante AuraDB. AuraDB es una base de datos como servicio (DBaaS) de Neo4j que permite a los desarrolladores desplegar y gestionar bases de datos gráficas en la nube de manera fácil y rápida.
 
